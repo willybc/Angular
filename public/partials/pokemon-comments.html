@@ -22,12 +22,14 @@
       </div>
     </form>
     <blockquote ng-repeat="comment in comments | orderBy: '-date'">
-      <p>{{comment.body}}</p>
+      <p>
+      {{comment.body}}
+      </p>
       <footer>
-        Comment by 
+        <img ng-if="!comment.anonymous" width="48px" class="img-circle" src="https://avatars1.githubusercontent.com/u/22482325?v=3&u=e78ca90915de57b4b16b990162341eb11851d540&s=400/{{comment.email | gravatar}}">
         <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a> 
         <em ng-if="comment.anonymous">Anonymous</em>
-        on <span>{{comment.date | date : 'medium'}}</span>
+        commented on <span>{{comment.date | date : 'medium'}}</span>
       </footer>
     </blockquote>
   </div>
